@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="display-5 text-primary"><i class="fas fa-clipboard-list me-3"></i>Mis Tareas</h1>
+        <a href="{% url 'create_task' %}" class="btn btn-primary">
+            <i class="fas fa-plus me-2"></i>Nueva Tarea
+        </a>
+    </div>
+
+    <div class="row">
+        {% for task in tasks %}
+        <div class="col-md-4 mb-4">
+            <div class="card custom-shadow h-100 {% if task.important %}border-danger{% endif %}">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        {% if task.important %}
+                        <i class="fas fa-star text-warning me-2"></i>
+                        {% endif %}
+                        {{ task.title }}
+                    </h5>
+                    <p class="card-text">{{ task.description }}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <small class="text-muted">
+                            <i class="fas fa-user me-1"></i>
+                            {{ task.user.username }}
+                        </small>
+                        <a href="{% url 'task_detail' task.id %}" class="btn btn-outline-primary btn-sm">
+                            <i class="fas fa-edit me-1"></i>Editar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row align-items-center">
+        <div class="col-lg-6">
+            <h1 class="display-4 fw-bold text-primary mb-4">Organiza tu vida con TaskMaster</h1>
+            <p class="lead mb-4">Simplifica tu día a día con nuestra herramienta de gestión de tareas. Mantén todo organizado, establece prioridades y alcanza tus objetivos.</p>
+            
+            {% if not user.is_authenticated %}
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                <a href="{% url 'signin' %}" class="btn btn-primary btn-lg px-4 me-md-2">Iniciar Sesión</a>
+                <a href="{% url 'signup' %}" class="btn btn-outline-primary btn-lg px-4">Registrarse</a>
+            </div>
+            {% endif %}
+        </div>
+        <div class="col-lg-6">
+            
+        </div>
+    </div>
+
+    <div class="row mt-5 pt-5">
+        <div class="col-md-4">
+            <div class="card custom-shadow h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-tasks fa-3x text-primary mb-3"></i>
+                    <h3 class="card-title">Organización Simple</h3>
+                    <p class="card-text">Crea y organiza tus tareas de manera intuitiva y eficiente.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card custom-shadow h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-bell fa-3x text-primary mb-3"></i>
+                    <h3 class="card-title">Prioridades</h3>
+                    <p class="card-text">Marca tus tareas importantes y mantén el foco en lo que realmente importa.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card custom-shadow h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-check-circle fa-3x text-primary mb-3"></i>
+                    <h3 class="card-title">Seguimiento</h3>
+                    <p class="card-text">Mantén un registro de tus tareas completadas y pendientes.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

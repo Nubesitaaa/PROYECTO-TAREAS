@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card custom-shadow">
+                <div class="card-body">
+                    <h1 class="card-title text-center text-primary mb-4">
+                        <i class="fas fa-plus-circle me-2"></i>Nueva Tarea
+                    </h1>
+                    
+                    <form action="/tasks/create/" method="POST">
+                        {% csrf_token %}
+                        
+                        <div class="mb-4">
+                            <label for="title" class="form-label">
+                                <i class="fas fa-heading me-2"></i>Título de la Tarea
+                            </label>
+                            <input type="text" class="form-control form-control-lg" id="title" name="title" required>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="description" class="form-label">
+                                <i class="fas fa-align-left me-2"></i>Descripción
+                            </label>
+                            <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="form-check form-switch">
+                                <input type="checkbox" class="form-check-input" id="important" name="important">
+                                <label class="form-check-label" for="important">
+                                    <i class="fas fa-star text-warning me-2"></i>Marcar como importante
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-save me-2"></i>Guardar Tarea
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
